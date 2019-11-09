@@ -1,5 +1,24 @@
 {
+  "common": {
+    "search": "Szukaj",
+    "add": "Dodaj"
+  },
   "menu": {
-    "home": "Strona Główna"
+    "home": "Strona Główna",
+    "list": "Lista zawodników"
+  },
+  "table": {
+    "noData": "Brak danych do wyświetlenia",
+    "noResult": "Nie znaleziono dopasowania",
+    "itemsPerPage": "Wierszy na stronie"
+  },
+  "memberList": {
+    "firstName": "Imię",
+    "lastName": "Nazwisko",
+    "birthDate": "Data urodzenia",
+    "level": "Stopień",
+    "add": "Dodaj nowego zawodnika",
+    "edit": "Edytuj dane zawodnika",
+    "comment": "Uwagi"
   }
 }

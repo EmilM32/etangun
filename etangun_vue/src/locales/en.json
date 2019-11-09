@@ -1,5 +1,24 @@
 {
+  "common": {
+    "search": "Search",
+    "add": "Add"
+  },
   "menu": {
-    "home": "Home"
+    "home": "Home",
+    "list": "Member list"
+  },
+  "table": {
+    "noData": "No data available",
+    "noResult": "No result available",
+    "itemsPerPage": "Items per page"
+  },
+  "memberList": {
+    "firstName": "First name",
+    "lastName": "Last name",
+    "birthDate": "Date of birth",
+    "level": "Level",
+    "add": "Add new member",
+    "edit": "Edit member data",
+    "comment": "Comment"
   }
 }

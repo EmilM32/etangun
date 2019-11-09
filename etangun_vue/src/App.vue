@@ -11,7 +11,7 @@
             <v-icon>mdi-home</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Home</v-list-item-title>
+            <v-list-item-title>{{ $t('menu.home') }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link>
@@ -27,12 +27,41 @@
 
     <v-app-bar
       app
-      color="indigo"
+      color="light-blue darken-2"
       dark
       clipped-left
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>Application</v-toolbar-title>
+      <v-toolbar-title>Tangun</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-menu offset-x>
+      <template v-slot:activator="{ on }">
+        <v-btn icon v-on="on">
+          <v-icon>mdi-earth</v-icon>
+        </v-btn> 
+      </template>
+      <v-list>
+        <v-list-item>
+          <img src="../public/pl.svg" alt="pl" style='width:20px'
+            @click='$i18n.locale = "pl"'>
+        </v-list-item>
+        <v-list-item>
+          <img src="../public/en.svg" alt="en" style='width:20px'
+            @click='$i18n.locale = "en"'>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+      <!-- <div v-if='showLangMenu' class='mr-3'>
+        <img src="../public/pl.svg" alt="pl" style='width:20px'
+          @click='$i18n.locale = "pl"'>
+        
+        <img src="../public/en.svg" alt="en" style='width:20px'
+          @click='$i18n.locale = "en"'>
+      </div>
+      <v-btn icon
+        @click='showLangMenu = !showLangMenu'>
+        <v-icon>mdi-earth</v-icon>
+      </v-btn> -->
     </v-app-bar>
 
     <v-content>
@@ -40,49 +69,13 @@
         class="fill-height"
         fluid
       >
-        <v-row
-          align="center"
-          justify="center"
-        >
-          <v-col class="text-center">
-            <v-tooltip left>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  :href="source"
-                  icon
-                  large
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-code-tags</v-icon>
-                </v-btn>
-              </template>
-              <span>Source</span>
-            </v-tooltip>
-
-            <v-tooltip right>
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  icon
-                  large
-                  href="https://codepen.io/johnjleider/pen/zgxeLQ"
-                  target="_blank"
-                  v-on="on"
-                >
-                  <v-icon large>mdi-codepen</v-icon>
-                </v-btn>
-              </template>
-              <span>Codepen</span>
-            </v-tooltip>
-          </v-col>
-        </v-row>
       </v-container>
     </v-content>
     <v-footer
-      color="indigo"
+      color="light-blue darken-2"
       app
     >
-      <span class="white--text">&copy; 2019</span>
+      <span class="white--text">&copy; 2019 UKS Tangun</span>
     </v-footer>
   </v-app>
 </template>
@@ -90,12 +83,9 @@
 <script>
 import axios from "axios"
 export default {
-  props: {
-    source: String,
-  },
-
+  props: { source: String, },
   data: () => ({
-    drawer: null,
+    drawer: null
   }),
   mounted () {
     axios.get('/api/tangun/test_function/').then(response =>{

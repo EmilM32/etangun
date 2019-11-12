@@ -22,17 +22,44 @@
               :label="$t('memberList.lastName')">
             </v-text-field>
           </v-col>
-          <v-col cols='6'>
-            <v-text-field
-              v-model='memberData.birthDate'
-              :label="$t('memberList.birthDate')">
-            </v-text-field>
+          <v-col cols='4'>
+            <v-menu
+              v-model="dateMenu"
+              :close-on-content-click="false"
+              transition="scale-transition"
+              offset-y
+              min-width="290px">
+              <template v-slot:activator="{ on }">
+                <v-text-field
+                  v-model="memberData.birthDate"
+                  :label="$t('memberList.birthDate')"
+                  prepend-icon="mdi-calendar"
+                  readonly
+                  v-on="on"
+                ></v-text-field>
+              </template>
+              <v-date-picker
+                v-model="memberData.birthDate"
+                @input="dateMenu = false"
+                locale='pl'>
+              </v-date-picker>
+            </v-menu>
           </v-col>
-          <v-col cols='6'>
-            <v-text-field
+          <v-col cols='4'>
+            <v-autocomplete
+              :items='groupItems'
+              v-model='memberData.group'
+              :label="$t('memberList.group')">
+            </v-autocomplete>
+          </v-col>
+          <v-col cols='4'>
+            <v-autocomplete
               v-model='memberData.level'
+              :items='beltLevels'
+              item-text='belt_level'
+              item-value='id'
               :label="$t('memberList.level')">
-            </v-text-field>
+            </v-autocomplete>
           </v-col>
           <v-col cols='12' class='pt-5'>
             <v-textarea
@@ -49,7 +76,7 @@
           icon
           x-large
           color='grey'
-          @click='$emit("input", false)'>
+          @click='closeDialog'>
           <v-icon>mdi-close</v-icon>
         </v-btn>
         <v-btn
@@ -64,20 +91,35 @@
   </v-dialog>
 </template>
 <script>
+import axios from "axios"
 export default {
-  props: ['value', 'addCase'],
+  props: ['value', 'addCase', 'beltLevels'],
   data: () => ({
     memberData: {
       firstName: '',
       lastName: '',
-      birthDate: '',
+      birthDate: new Date().toISOString().substr(0, 10),
+      group: '',
       level: '',
       comment: ''
-    }
+    },
+    groupItems: [1, 2],
+    dateMenu: false
   }),
   methods: {
     saveData () {
-      console.log(this.memberData)
+      axios
+        .post('/api/tangun/save_new_member/', this.memberData)
+        .then(response => {
+          if (response.status === 200) {
+            this.$emit('reloadData', true)
+            this.closeDialog()
+          } 
+        })
+        .catch(error => console.error(error))
+    },
+    closeDialog () {
+      this.$emit("input", false)
     }
   }
 }

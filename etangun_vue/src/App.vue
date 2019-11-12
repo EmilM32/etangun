@@ -60,16 +60,10 @@
   </v-app>
 </template>
 <script>
-import axios from "axios"
 export default {
   data: () => ({
     drawer: null
   }),
-  mounted () {
-    axios.get('/api/tangun/test_function/').then(response =>{
-      console.log(response)
-    })
-  },
   computed: {
     getSideBarItems () {
       return [

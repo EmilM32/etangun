@@ -17,6 +17,7 @@
     "lastName": "Last name",
     "birthDate": "Date of birth",
     "level": "Level",
+    "group": "Group",
     "add": "Add new member",
     "edit": "Edit member data",
     "comment": "Comment"

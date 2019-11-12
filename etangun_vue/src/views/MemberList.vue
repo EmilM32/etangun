@@ -35,11 +35,14 @@
     <MemberHandler 
       v-if='memberHandler.dialog'
       v-model='memberHandler.dialog'
-      :addCase='memberHandler.addCase'>
+      :addCase='memberHandler.addCase'
+      :beltLevels='beltLevels'
+      @reloadData='getAllMembers'>
     </MemberHandler>
   </div>
 </template>
 <script>
+import axios from "axios"
 import MemberHandler from "@/views/dialogs/MemberHandler.vue"
 export default {
   components: { MemberHandler },
@@ -47,51 +50,29 @@ export default {
     memberHandler: {
       dialog: false,
       addCase: true,
+      beltLevels: []
     },
     searchModel: '',
-    memberlist: [
-      {
-        firstName: "firstName1",
-        lastName: "lastName",
-        birthDate: "birthDate",
-        level: "level"
-      },
-      {
-        firstName: "firstName2",
-        lastName: "lastName",
-        birthDate: "birthDate",
-        level: "level"
-      },
-      {
-        firstName: "firstName3",
-        lastName: "lastName",
-        birthDate: "birthDate",
-        level: "level"
-      },
-      {
-        firstName: "firstName4",
-        lastName: "lastName",
-        birthDate: "birthDate",
-        level: "level"
-      },
-      {
-        firstName: "firstName5",
-        lastName: "lastName",
-        birthDate: "birthDate",
-        level: "level"
-      },
-      {
-        firstName: "firstName6",
-        lastName: "lastName",
-        birthDate: "birthDate",
-        level: "level"
-      }
-    ],
+    memberlist: [],
   }),
   methods: {
+    getAllMembers () {
+      axios
+        .get('/api/tangun/get_all_members/')
+        .then(response => { if (response.status === 200) this.memberlist = response.data.data })
+        .catch(error => console.error(error))
+    },
     addNewMember () {
-      this.memberHandler.addCase = true
-      this.memberHandler.dialog = true
+      if (this.beltLevels.length > 0) {
+        this.memberHandler.addCase = true
+        this.memberHandler.dialog = true
+      }
+    },
+    getLevelDict () {
+      axios
+        .get('/api/tangun/get_belt_level/')
+        .then(response => { if (response.status === 200) this.beltLevels = response.data.data })
+        .catch(error => console.error(error))
     }
   },
   computed: {
@@ -100,9 +81,14 @@ export default {
         { text: this.$t('memberList.firstName'), value: 'firstName', align: 'center' },
         { text: this.$t('memberList.lastName'), value: 'lastName', align: 'center' },
         { text: this.$t('memberList.birthDate'), value: 'birthDate', align: 'center' },
-        { text: this.$t('memberList.level'), value: 'level', align: 'center' }
+        { text: this.$t('memberList.level'), value: 'level', align: 'center' },
+        { text: this.$t('memberList.group'), value: 'group', align: 'center' }
       ]
     }
+  },
+  mounted () {
+    this.getAllMembers()
+    this.getLevelDict()
   }
 }
 </script>

@@ -17,6 +17,7 @@
     "lastName": "Nazwisko",
     "birthDate": "Data urodzenia",
     "level": "Stopień",
+    "group": "Grupa",
     "add": "Dodaj nowego zawodnika",
     "edit": "Edytuj dane zawodnika",
     "comment": "Uwagi"

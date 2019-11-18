@@ -44,6 +44,7 @@
 <script>
 import axios from "axios"
 import MemberHandler from "@/views/dialogs/MemberHandler.vue"
+import { mapMutations } from 'vuex'
 export default {
   components: { MemberHandler },
   data: () => ({

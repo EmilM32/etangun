@@ -25,6 +25,12 @@
   "snackbar": {
     "success": {
       "save": "Prawidłowo zapisano dane"
+    },
+    "error": {
+      "save": "Błąd podczas zapisu danych"
+    },
+    "info": {
+      "tryAgain": "Coś poszło nie tak, odśwież stronę i spróbuj ponownie"
     }
   }
 }

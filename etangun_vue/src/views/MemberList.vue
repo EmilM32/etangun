@@ -29,6 +29,7 @@
           :headers="tableHeaders"
           :items="memberlist"
           :search="searchModel"
+          :showExpand='true'
         ></t-data-table>
       </v-card-text>
     </v-card>
@@ -36,7 +37,7 @@
       v-if='memberHandler.dialog'
       v-model='memberHandler.dialog'
       :addCase='memberHandler.addCase'
-      :beltLevels='beltLevels'
+      :beltLevels='memberHandler.beltLevels'
       @reloadData='getAllMembers'>
     </MemberHandler>
   </div>
@@ -64,15 +65,17 @@ export default {
         .catch(error => console.error(error))
     },
     addNewMember () {
-      if (this.beltLevels.length > 0) {
+      if (this.memberHandler.beltLevels.length > 0) {
         this.memberHandler.addCase = true
         this.memberHandler.dialog = true
+      } else {
+        this.$store.commit('snackbar/setSnackInfo', this.$t('snackbar.info.tryAgain'))
       }
     },
     getLevelDict () {
       axios
         .get('/api/tangun/get_belt_level/')
-        .then(response => { if (response.status === 200) this.beltLevels = response.data.data })
+        .then(response => { if (response.status === 200) this.memberHandler.beltLevels = response.data.data })
         .catch(error => console.error(error))
     }
   },
@@ -83,7 +86,8 @@ export default {
         { text: this.$t('memberList.lastName'), value: 'lastName', align: 'center' },
         { text: this.$t('memberList.birthDate'), value: 'birthDate', align: 'center' },
         { text: this.$t('memberList.level'), value: 'level', align: 'center' },
-        { text: this.$t('memberList.group'), value: 'group', align: 'center' }
+        { text: this.$t('memberList.group'), value: 'group', align: 'center' },
+        { text: '', value: 'data-table-expand' }
       ]
     }
   },

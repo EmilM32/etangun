@@ -113,9 +113,11 @@ export default {
         .then(response => {
           if (response.status === 200) {
             this.$emit('reloadData', true)
-            this.$store.commit('snackbar/setSnackInfo', this.$t('snackbar.success.save'))
+            this.$store.commit('snackbar/setSnackSuccess', this.$t('snackbar.success.save'))
             this.closeDialog()
-          } 
+          } else {
+            this.$store.commit('snackbar/setSnackError', this.$t('snackbar.error.save'))
+          }
         })
         .catch(error => console.error(error))
     },

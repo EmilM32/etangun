@@ -25,6 +25,12 @@
   "snackbar": {
     "success": {
       "save": "Successfully saved data"
+    },
+    "error": {
+      "save": "Save data finished with an error"
+    },
+    "info": {
+      "tryAgain": "Something went wrong, refresh the page and try again"
     }
   }
 }

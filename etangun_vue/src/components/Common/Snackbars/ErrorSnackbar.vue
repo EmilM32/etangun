@@ -8,9 +8,9 @@
     :timeout="timeout"
     :vertical="mode === 'vertical'">
     {{ message }}
-    <v-btn text
+    <v-btn icon fab
       @click="show = false">
-      <!-- {{ $t('snackbars.common.closeButton') }} -->
+      <v-icon>mdi-close</v-icon>
     </v-btn>
   </v-snackbar>
 </template>

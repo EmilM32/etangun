@@ -49,7 +49,7 @@ def get_all_members(request):
             firstName=F('first_name'), lastName=F('last_name'),
             birthDate=F('date_of_birth'), level=F('belt_level__belt_level')
         ).values('firstName', 'lastName', 'birthDate', 'level', 'group',
-                 'comment')
+                 'comment', 'id')
         all_members = list(all_members)
 
     except BaseException:

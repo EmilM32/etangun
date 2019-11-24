@@ -5,7 +5,8 @@
   },
   "menu": {
     "home": "Strona Główna",
-    "list": "Lista zawodników"
+    "list": "Lista zawodników",
+    "places": "Miejsca"
   },
   "table": {
     "noData": "Brak danych do wyświetlenia",

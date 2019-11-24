@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import MemberList from '../views/MemberList.vue'
+import Places from '../views/Places.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +16,11 @@ const routes = [
     path: '/MemberList',
     name: 'MemberList',
     component: MemberList
+  },
+  {
+    path: '/Places',
+    name: 'Places',
+    component: Places
   }
 ]
 

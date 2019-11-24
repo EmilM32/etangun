@@ -2,7 +2,9 @@
   <div>
     <v-card>
       <v-card-title>
-        <v-tooltip right>
+        <v-spacer></v-spacer>
+        <v-toolbar-title>{{ $t('menu.list') }}</v-toolbar-title>
+        <!-- <v-tooltip right>
           <template v-slot:activator="{ on }">
             <v-btn
               v-on="on"
@@ -14,7 +16,7 @@
             </v-btn>
           </template>
           <span>{{ $t('common.add') }}</span>
-        </v-tooltip>
+        </v-tooltip> -->
         <v-spacer></v-spacer>
         <v-text-field
           v-model="searchModel"
@@ -32,6 +34,25 @@
         ></t-data-table>
       </v-card-text>
     </v-card>
+    <v-fab-transition>
+      <v-tooltip left>
+        <template v-slot:activator="{ on }">
+          <v-btn
+            v-on="on"
+            icon
+            x-large
+            fixed
+            bottom
+            right
+            fab
+            color='success'
+            @click='addNewMember'>
+            <v-icon style='font-size: 2.5rem'>mdi-plus-circle</v-icon>
+          </v-btn>
+        </template>
+        <span>{{ $t('common.add') }}</span>
+      </v-tooltip>
+    </v-fab-transition>
     <MemberHandler 
       v-if='memberHandler.dialog'
       v-model='memberHandler.dialog'

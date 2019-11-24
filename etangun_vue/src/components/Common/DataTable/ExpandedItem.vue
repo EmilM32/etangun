@@ -51,9 +51,22 @@
               </v-row>
             </v-card>
         </v-col>
-        <v-col cols='6'>
+        <v-col cols='4'>
           <v-card outlined>
-            test2
+            <v-card-subtitle class='overline font-weight-bold' style='font-family: Verdana'>osiągnięcia</v-card-subtitle>
+            <v-card-text class='text-right'>
+              <div class='d-block'>
+                <img src="@/assets/medals/gold.png" alt="gold" class='medal-style'>
+                <img src="@/assets/medals/gold.png" alt="gold" class='medal-style'>
+                <img src="@/assets/medals/gold.png" alt="gold" class='medal-style'>
+              </div>
+              <div class='d-block'>
+                <img src="@/assets/medals/silver.png" alt="silver" class='medal-style'>
+              </div>
+              <div class='d-block'>
+                <img src="@/assets/medals/brown.png" alt="brown" class='medal-style'>
+              </div>
+            </v-card-text>
           </v-card>
         </v-col>
       </v-row>
@@ -123,3 +136,7 @@ export default {
 
 }
 </script>
+<style lang="sass">
+.medal-style
+  width: 40px
+</style>

@@ -18,3 +18,24 @@ class Members(models.Model):
     comment = models.TextField(blank=True)
     gender = models.CharField(max_length=1, blank=True)  # M or K
     login = models.CharField(max_length=5, blank=True)
+
+
+class Addresses(models.Model):
+    city = models.CharField(max_length=50)
+    post_code = models.CharField(max_length=10)
+    street_address = models.CharField(max_length=100)
+    is_active = models.BooleanField(default=True)
+    comment = models.CharField(max_length=150)
+
+
+class CompetitionDict(models.Model):
+    name = models.CharField(max_length=50)
+    code = models.CharField(max_length=3)
+
+
+class CompetitionResult(models.Model):
+    place = models.IntegerField()
+    member_id = models.ForeignKey(Members, on_delete=models.CASCADE)
+    competition_date = models.DateField(default=datetime.datetime.now, blank=True)
+    address = models.ForeignKey(Addresses, on_delete=models.CASCADE)
+    competition_active = models.ForeignKey(CompetitionDict, on_delete=models.CASCADE)

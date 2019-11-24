@@ -5,7 +5,8 @@
   },
   "menu": {
     "home": "Home",
-    "list": "Member list"
+    "list": "Member list",
+    "places": "Places"
   },
   "table": {
     "noData": "No data available",

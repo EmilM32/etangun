@@ -74,6 +74,11 @@ export default {
           icon: 'mdi-view-list',
           text: this.$t('menu.list'),
           link: '/MemberList'
+        },
+        {
+          icon: 'mdi-map-marker',
+          text: this.$t('menu.places'),
+          link: '/Places'
         }
       ]
     }

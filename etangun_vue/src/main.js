@@ -8,7 +8,7 @@ import router from './router'
 import Vuex from 'vuex'
 import store from "@/store/index.js"
 //COMMON COMPONENTS
-import DataTable from "@/components/DataTable.vue"
+import DataTable from "@/components/Common/DataTable/Table.vue"
 import ErrorSnackbar from "@/components/Common/Snackbars/ErrorSnackbar.vue"
 import SuccessSnackbar from "@/components/Common/Snackbars/SuccessSnackbar.vue"
 import InfoSnackbar from "@/components/Common/Snackbars/InfoSnackbar.vue"

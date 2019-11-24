@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_http_methods
 from .models import LevelDict, Members
+from .tools.login_generator import LoginGenerator
 
 
 @csrf_exempt
@@ -27,6 +28,9 @@ def get_belt_level(request):
 def save_new_member(request):
     try:
         data_front = json.loads(request.body)
+        login = LoginGenerator(data_front).create()
+        if login['code'] == 1:
+            return JsonResponse({'info': 'No free login', 'code': 1})
         new_member = Members()
         new_member.first_name = data_front['firstName']
         new_member.last_name = data_front['lastName']
@@ -34,6 +38,8 @@ def save_new_member(request):
         new_member.belt_level_id = data_front['level']
         new_member.group = data_front['group']
         new_member.comment = data_front['comment']
+        new_member.gender = data_front['gender']
+        new_member.login = login['login']
         new_member.save()
 
     except BaseException:
@@ -49,7 +55,7 @@ def get_all_members(request):
             firstName=F('first_name'), lastName=F('last_name'),
             birthDate=F('date_of_birth'), level=F('belt_level__belt_level')
         ).values('firstName', 'lastName', 'birthDate', 'level', 'group',
-                 'comment', 'id')
+                 'comment', 'id', 'gender', 'login')
         all_members = list(all_members)
 
     except BaseException:

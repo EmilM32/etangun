@@ -18,6 +18,7 @@
     "birthDate": "Data urodzenia",
     "level": "Stopień",
     "group": "Grupa",
+    "gender": "Płeć",
     "add": "Dodaj nowego zawodnika",
     "edit": "Edytuj dane zawodnika",
     "comment": "Uwagi"

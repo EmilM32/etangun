@@ -45,20 +45,27 @@
               </v-date-picker>
             </v-menu>
           </v-col>
-          <v-col cols='4'>
+          <v-col cols='3'>
             <v-autocomplete
               :items='groupItems'
               v-model='memberData.group'
               :label="$t('memberList.group')">
             </v-autocomplete>
           </v-col>
-          <v-col cols='4'>
+          <v-col cols='3'>
             <v-autocomplete
               v-model='memberData.level'
               :items='beltLevels'
               item-text='belt_level'
               item-value='id'
               :label="$t('memberList.level')">
+            </v-autocomplete>
+          </v-col>
+          <v-col cols='2'>
+            <v-autocomplete
+              v-model='memberData.gender'
+              :items='gender'
+              :label="$t('memberList.gender')">
             </v-autocomplete>
           </v-col>
           <v-col cols='12' class='pt-5'>
@@ -104,7 +111,8 @@ export default {
       comment: ''
     },
     groupItems: [1, 2],
-    dateMenu: false
+    dateMenu: false,
+    gender: ['M', 'K']
   }),
   methods: {
     saveData () {

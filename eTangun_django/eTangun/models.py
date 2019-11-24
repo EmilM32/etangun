@@ -16,3 +16,5 @@ class Members(models.Model):
     group = models.IntegerField()
     is_active = models.BooleanField(default=True)
     comment = models.TextField(blank=True)
+    gender = models.CharField(max_length=1, blank=True)  # M or K
+    login = models.CharField(max_length=5, blank=True)

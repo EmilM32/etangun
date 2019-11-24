@@ -52,11 +52,6 @@
         <router-view/>
       </v-container>
     </v-content>
-    <v-footer
-      color="light-blue darken-2"
-      app>
-      <span class="white--text">&copy; 2019 UKS Tangun</span>
-    </v-footer>
     <t-success-snackbar></t-success-snackbar>
     <t-info-snackbar></t-info-snackbar>
     <t-error-snackbar></t-error-snackbar>

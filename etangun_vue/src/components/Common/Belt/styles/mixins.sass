@@ -1,0 +1,43 @@
+@import colors
+@mixin return-color($levelN, $levelT)
+  display: inline-block
+  @if $levelT == 'kup'
+    @if $levelN == 10 or $levelN == 9
+      background-color: $white
+      border: 1px solid $border
+    @else if $levelN == 8 or $levelN == 7
+      background-color: $yellow
+    @else if $levelN == 6 or $levelN == 5
+      background-color: $green
+    @else if $levelN == 4 or $levelN == 3
+      background-color: $blue
+    @else if $levelN == 2 or $levelN == 1
+      background-color: $red
+  @else if $levelT == 'poom'
+    line-height: 0
+    vertical-align: 0
+    background: $black
+    background: -moz-linear-gradient(top,  $black 0%, $black 49%, $red 51%, $red 100%)
+    background: -webkit-linear-gradient(top,  $black 0%,$black 49%,$red 51%,$red 100%)
+    background: linear-gradient(to bottom,  $black 0%,$black 49%,$red 51%,$red 100%)
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$black', endColorstr='$red',GradientType=0 )
+  @else if $levelT == 'dan'
+    background-color: $black
+    line-height: 0
+    vertical-align: 0
+
+@mixin belt-color($levelN)
+  min-width: 10px
+  max-width: 20px
+  margin-left: 10px
+  height: 100%
+  @if $levelN == 9
+    background-color: $yellow
+  @else if $levelN == 7
+    background-color: $green
+  @else if $levelN == 5
+    background-color: $blue
+  @else if $levelN == 3
+    background-color: $red
+  @else if $levelN == 1
+    background-color: $black

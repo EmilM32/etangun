@@ -51,8 +51,8 @@ class LoginGenerator:
             alpDict[el] = i
 
         _index = int(len(first_name)/2)
-        dict_key = alpDict[first_name[_index].upper()]
-        _el_two = _length_check(dict_key)
+        _dict_key = alpDict[first_name[_index].upper()]
+        _el_two = _length_check(_dict_key)
 
         _date_arr = birth_date.split('-')
         _date_sum = int(_date_arr[0]) + int(_date_arr[1]) + int(_date_arr[2])
@@ -60,8 +60,8 @@ class LoginGenerator:
         _el_three = _length_check(ord(str(_date_check)))
 
         _logins = []
-        for el in current_logins:
-            _logins.append(el['login'])
+        for login in current_logins:
+            _logins.append(login['login'])
 
         member_login = ''
         while True:

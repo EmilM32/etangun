@@ -15,9 +15,13 @@
     :expanded.sync="expanded"
     class="elevation-1">
     <template v-slot:expanded-item="{ headers, item }">
-      <td :style='{"background-color": "white"}' :colspan="headers.length">
+      <td :style='{"background-color": "#FAFAFA"}' :colspan="headers.length">
         <ExpandedItem :item='item'></ExpandedItem>
       </td>
+    </template>
+    <template v-slot:item.gender="{ item }">
+      <v-icon v-if='item.gender === "M"'>mdi-face</v-icon>
+      <v-icon v-else>mdi-face-woman</v-icon>
     </template>
   </v-data-table>
   <div class="text-center pt-2">
@@ -52,6 +56,11 @@ export default {
     expandShow: false,
     expanded: [],
     singleExpand: false,
-  })
+  }),
+  methods: {
+    activerow () {
+      console.log('activerow')
+    }
+  }
 }
 </script>

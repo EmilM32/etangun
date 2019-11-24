@@ -85,6 +85,7 @@ export default {
         { text: this.$t('memberList.birthDate'), value: 'birthDate', align: 'center' },
         { text: this.$t('memberList.level'), value: 'level', align: 'center' },
         { text: this.$t('memberList.group'), value: 'group', align: 'center' },
+        { text: this.$t('memberList.gender'), value: 'gender', align: 'center' },
         { text: '', value: 'data-table-expand' }
       ]
     }

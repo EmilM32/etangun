@@ -7,7 +7,7 @@ from django.http import JsonResponse, HttpResponseBadRequest, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_http_methods
-from .models import LevelDict, Members
+from .models import LevelDict, Members, Addresses
 from .tools.login_generator import LoginGenerator
 
 
@@ -31,16 +31,16 @@ def save_new_member(request):
         login = LoginGenerator(data_front).create()
         if login['code'] == 1:
             return JsonResponse({'info': 'No free login', 'code': 1})
-        new_member = Members()
-        new_member.first_name = data_front['firstName']
-        new_member.last_name = data_front['lastName']
-        new_member.date_of_birth = data_front['birthDate']
-        new_member.belt_level_id = data_front['level']
-        new_member.group = data_front['group']
-        new_member.comment = data_front['comment']
-        new_member.gender = data_front['gender']
-        new_member.login = login['login']
-        new_member.save()
+        _new_member = Members()
+        _new_member.first_name = data_front['firstName']
+        _new_member.last_name = data_front['lastName']
+        _new_member.date_of_birth = data_front['birthDate']
+        _new_member.belt_level_id = data_front['level']
+        _new_member.group = data_front['group']
+        _new_member.comment = data_front['comment']
+        _new_member.gender = data_front['gender']
+        _new_member.login = login['login']
+        _new_member.save()
 
     except BaseException:
         return JsonResponse({'code': 1})
@@ -61,3 +61,63 @@ def get_all_members(request):
     except BaseException:
         return JsonResponse({'code': 1})
     return JsonResponse({'data': all_members})
+
+
+@csrf_exempt
+@require_http_methods(["GET"])
+def get_all_addresses(request):
+    try:
+        all_addresses = Addresses.objects.annotate(
+            postCode=F('post_code'), streetAddress=F('street_address'),
+            isActive=F('is_active')
+        ).values('id', 'city', 'postCode',
+                 'streetAddress', 'descr', 'isActive')
+        all_addresses = list(all_addresses)
+
+    except BaseException:
+        return JsonResponse({'code': 1})
+    return JsonResponse({'data': all_addresses})
+
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def add_new_address(request):
+    """
+    Funkcja zapisuje nowy adres
+    {
+        "city": "Poznań",
+        "postCode": "60-688",
+        "streetAddress": "Stróżyńskiego 15e",
+        "descr": "dom"
+    }
+
+    """
+    try:
+        data_front = json.loads(request.body)
+        _new_address = Addresses()
+        _new_address.city = data_front['city']
+        _new_address.post_code = data_front['postCode']
+        _new_address.street_address = data_front['streetAddress']
+        _new_address.descr = data_front['descr']
+        _new_address.save()
+
+    except BaseException:
+        return JsonResponse({'code': 1})
+    return JsonResponse({'code': 0})
+
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def edit_address(request):
+    try:
+        data_front = json.loads(request.body)
+        _edited_item = Addresses.objects.get(id=data_front['id'])
+        _edited_item.city = data_front['city']
+        _edited_item.post_code = data_front['postCode']
+        _edited_item.street_address = data_front['streetAddress']
+        _edited_item.descr = data_front['descr']
+        _edited_item.save()
+    except BaseException:
+        traceback.print_exc()
+        return JsonResponse({'code': 1})
+    return JsonResponse({'code': 0})

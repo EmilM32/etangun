@@ -1,12 +1,13 @@
 {
   "common": {
     "search": "Szukaj",
-    "add": "Dodaj"
+    "add": "Dodaj adres",
+    "actions": "Akcje"
   },
   "menu": {
     "home": "Strona Główna",
     "list": "Lista zawodników",
-    "places": "Miejsca"
+    "places": "Moje miejsca"
   },
   "table": {
     "noData": "Brak danych do wyświetlenia",
@@ -24,6 +25,15 @@
     "edit": "Edytuj dane zawodnika",
     "comment": "Uwagi",
     "yearsOld": "Lat"
+  },
+  "addresses": {
+    "city": "Miasto",
+    "postCode": "Kod pocztowy",
+    "streetAddress": "Adres",
+    "descr": "Opis",
+    "add": "Dodaj adres",
+    "edit": "Edytuj adres",
+    "delete": "Usuń adres"
   },
   "snackbar": {
     "success": {

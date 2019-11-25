@@ -13,10 +13,13 @@ import ErrorSnackbar from "@/components/Common/Snackbars/ErrorSnackbar.vue"
 import SuccessSnackbar from "@/components/Common/Snackbars/SuccessSnackbar.vue"
 import InfoSnackbar from "@/components/Common/Snackbars/InfoSnackbar.vue"
 import Belt from "@/components/Common/Belt/Main.vue"
+import VueTheMask from 'vue-the-mask'
+
 Vue.config.productionTip = false
 
 Vue.use(VueAxios, axios)
 Vue.use(Vuex)
+Vue.use(VueTheMask)
 //Custom components starts with 't-' prefix
 Vue.component("t-data-table", DataTable)
 Vue.component("t-error-snackbar", ErrorSnackbar)

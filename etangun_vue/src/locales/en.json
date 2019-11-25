@@ -1,12 +1,13 @@
 {
   "common": {
     "search": "Search",
-    "add": "Add"
+    "add": "Add",
+    "actions": "Actions"
   },
   "menu": {
     "home": "Home",
     "list": "Member list",
-    "places": "Places"
+    "places": "My places"
   },
   "table": {
     "noData": "No data available",
@@ -24,6 +25,15 @@
     "edit": "Edit member data",
     "comment": "Comment",
     "yearsOld": "yo"
+  },
+  "addresses": {
+    "city": "City",
+    "postCode": "Post code",
+    "streetAddress": "Address",
+    "descr": "Description",
+    "add": "Add address",
+    "edit": "Edit address",
+    "delete": "Delete address"
   },
   "snackbar": {
     "success": {

@@ -25,9 +25,6 @@ export default {
     beltColor () {
       return `belt-${this.levelN}`
     }
-  },
-  mounted () {
-    // console.log(this.levelClass)
   }
 }
 </script>

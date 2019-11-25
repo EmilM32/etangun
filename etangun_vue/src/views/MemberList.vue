@@ -4,19 +4,6 @@
       <v-card-title>
         <v-spacer></v-spacer>
         <v-toolbar-title>{{ $t('menu.list') }}</v-toolbar-title>
-        <!-- <v-tooltip right>
-          <template v-slot:activator="{ on }">
-            <v-btn
-              v-on="on"
-              icon
-              x-large
-              color='success'
-              @click='addNewMember'>
-              <v-icon>mdi-plus-circle</v-icon>
-            </v-btn>
-          </template>
-          <span>{{ $t('common.add') }}</span>
-        </v-tooltip> -->
         <v-spacer></v-spacer>
         <v-text-field
           v-model="searchModel"
@@ -39,15 +26,14 @@
         <template v-slot:activator="{ on }">
           <v-btn
             v-on="on"
-            icon
-            x-large
+            large
             fixed
             bottom
             right
             fab
             color='success'
             @click='addNewMember'>
-            <v-icon style='font-size: 2.5rem'>mdi-plus-circle</v-icon>
+            <v-icon>mdi-plus</v-icon>
           </v-btn>
         </template>
         <span>{{ $t('common.add') }}</span>
@@ -80,7 +66,7 @@ export default {
     getAllMembers () {
       axios
         .get('/api/tangun/get_all_members/')
-        .then(response => { if (response.status === 200) this.memberlist = response.data.data })
+        .then(response => { this.memberlist = response.data.data })
         .catch(error => console.error(error))
     },
     addNewMember () {
@@ -94,7 +80,7 @@ export default {
     getLevelDict () {
       axios
         .get('/api/tangun/get_belt_level/')
-        .then(response => { if (response.status === 200) this.memberHandler.beltLevels = response.data.data })
+        .then(response => { this.memberHandler.beltLevels = response.data.data })
         .catch(error => console.error(error))
     }
   },

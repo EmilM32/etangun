@@ -25,7 +25,7 @@ class Addresses(models.Model):
     post_code = models.CharField(max_length=10)
     street_address = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
-    comment = models.CharField(max_length=150)
+    descr = models.CharField(max_length=150)
 
 
 class CompetitionDict(models.Model):
@@ -36,6 +36,8 @@ class CompetitionDict(models.Model):
 class CompetitionResult(models.Model):
     place = models.IntegerField()
     member_id = models.ForeignKey(Members, on_delete=models.CASCADE)
-    competition_date = models.DateField(default=datetime.datetime.now, blank=True)
+    competition_date = models.DateField(default=datetime.datetime.now,
+                                        blank=True)
     address = models.ForeignKey(Addresses, on_delete=models.CASCADE)
-    competition_active = models.ForeignKey(CompetitionDict, on_delete=models.CASCADE)
+    competition_active = models.ForeignKey(CompetitionDict,
+                                           on_delete=models.CASCADE)

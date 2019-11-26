@@ -119,15 +119,14 @@ export default {
       axios
         .post('/api/tangun/save_new_member/', this.memberData)
         .then(response => {
-          if (response.status === 200) {
             this.$emit('reloadData', true)
             this.$store.commit('snackbar/setSnackSuccess', this.$t('snackbar.success.save'))
             this.closeDialog()
-          } else {
-            this.$store.commit('snackbar/setSnackError', this.$t('snackbar.error.save'))
-          }
         })
-        .catch(error => console.error(error))
+        .catch(error => {
+          console.error(error)
+          this.$store.commit('snackbar/setSnackError', this.$t('snackbar.error.save'))
+        })
     },
     closeDialog () {
       this.$emit("input", false)

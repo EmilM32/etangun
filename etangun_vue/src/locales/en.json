@@ -4,6 +4,11 @@
     "add": "Add",
     "actions": "Actions"
   },
+  "login": {
+    "loginForm": "Login form",
+    "login": "Login",
+    "pass": "Password"
+  },
   "menu": {
     "home": "Home",
     "list": "Member list",

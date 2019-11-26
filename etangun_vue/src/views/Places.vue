@@ -80,6 +80,7 @@
     <AddressHandler
       v-model='addressDialog'
       v-if='addressDialog'
+      @reloadData='getItems'
       :case='addressCase'
       :editedData='editedData'/>
   </div>
@@ -119,6 +120,7 @@ export default {
     },
     deleteAddress (item) {
       this.addressCase = 'del'
+      this.editedData = item
       this.addressDialog = true
     }
   },

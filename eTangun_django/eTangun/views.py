@@ -9,6 +9,8 @@ from django.views.decorators.csrf import ensure_csrf_cookie
 from django.views.decorators.http import require_http_methods
 from .models import LevelDict, Members, Addresses
 from .tools.login_generator import LoginGenerator
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate
 
 
 @csrf_exempt
@@ -66,8 +68,11 @@ def get_all_members(request):
 @csrf_exempt
 @require_http_methods(["GET"])
 def get_all_addresses(request):
+    """
+    Funkcja pobiera wszystkie aktywne adresy
+    """
     try:
-        all_addresses = Addresses.objects.annotate(
+        all_addresses = Addresses.objects.filter(is_active=True).annotate(
             postCode=F('post_code'), streetAddress=F('street_address'),
             isActive=F('is_active')
         ).values('id', 'city', 'postCode',
@@ -121,3 +126,42 @@ def edit_address(request):
         traceback.print_exc()
         return JsonResponse({'code': 1})
     return JsonResponse({'code': 0})
+
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def delete_address(request):
+    """
+    Funkcja zmienia status adresu na nieaktywny
+    """
+    try:
+        data_front = json.loads(request.body)
+        _inactive = Addresses.objects.get(id=data_front)
+        _inactive.is_active = False
+        _inactive.save()
+    except BaseException:
+        traceback.print_exc()
+        return JsonResponse({'code': 1})
+    return JsonResponse({'code': 0})
+
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def login_user(request):
+    """
+    Funkcja logująca użytkownika
+    """
+    try:
+        data_front = json.loads(request.body)
+        user = authenticate(username=data_front['username'],
+                            password=data_front['password'])
+        return_status = None
+        if user is not None:
+            return_status = True
+        else:
+            return_status = False
+
+    except BaseException:
+        traceback.print_exc()
+        return JsonResponse({'code': 1})
+    return JsonResponse({'data': return_status, 'code': 0})

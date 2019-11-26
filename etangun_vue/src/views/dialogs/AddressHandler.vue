@@ -10,7 +10,11 @@
         <span v-else-if='delFlg'>{{ $t('addresses.delete') }}</span>
       </v-card-title>
       <v-card-text>
-        <v-form ref='addressForm' lazy-validation v-model="valid">
+        <v-form
+          ref='addressForm'
+          lazy-validation
+          v-if='!delFlg'
+          v-model="valid">
           <v-row>
             <v-col cols='2'>
               <v-text-field
@@ -56,11 +60,20 @@
           <v-icon>mdi-close</v-icon>
         </v-btn>
         <v-btn
+          v-if='!delFlg'
           icon
           x-large
           color='success'
           @click='saveData'>
           <v-icon>mdi-content-save</v-icon>
+        </v-btn>
+        <v-btn
+          v-else
+          icon
+          x-large
+          color='red darken-3'
+          @click='deleteItem'>
+          <v-icon>mdi-delete</v-icon>
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -93,15 +106,21 @@ export default {
         if (this.case === 'add') {
           axios
             .post('/api/tangun/add_new_address/', this.address)
-            .then(response => { console.log(response) })
+            .then(response => { this.$emit('reloadData', true); this.closeDialog() })
             .catch(error => console.error(error))
         } else if (this.case === 'edit') {
           axios
             .post('/api/tangun/edit_address/', this.address)
-            .then(response => { console.log(response) })
+            .then(response => { this.$emit('reloadData', true); this.closeDialog() })
             .catch(error => console.error(error))
         }
       }
+    },
+    deleteItem (item) {
+      axios
+        .post('/api/tangun/delete_address/', this.editedData['id'])
+        .then(response => { this.$emit('reloadData', true); this.closeDialog() })
+        .catch(error => console.error(error))
     }
   },
   mounted () {

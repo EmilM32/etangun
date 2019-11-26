@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app v-if='isLogged'>
     <v-navigation-drawer
       v-model="drawer"
       app
@@ -56,13 +56,22 @@
     <t-info-snackbar></t-info-snackbar>
     <t-error-snackbar></t-error-snackbar>
   </v-app>
+  <Login v-else />
 </template>
 <script>
+import Login from "@/views/Login.vue"
+import { mapState } from 'vuex'
 export default {
+  components: { Login },
   data: () => ({
     drawer: null
   }),
+  methods: {},
   computed: {
+    ...mapState('auth', {
+      isLogged: 'isLogged',
+      userlogin: 'login'
+    }),
     getSideBarItems () {
       return [
         {
@@ -82,7 +91,7 @@ export default {
         }
       ]
     }
-  }
+  },
+  watch: {}
 }
 </script>
-

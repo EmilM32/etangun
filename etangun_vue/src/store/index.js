@@ -1,6 +1,7 @@
 import Vue from "vue"
 import Vuex from "vuex"
 import { snackbar } from "@/store/snackbar.js"
+import { auth } from "@/store/auth.js"
 
 Vue.use(Vuex)
 
@@ -11,7 +12,8 @@ const mutations = {}
 
 export default new Vuex.Store({
   modules: {
-    snackbar
+    snackbar,
+    auth
   },
   state,
   getters,

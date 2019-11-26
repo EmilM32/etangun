@@ -4,6 +4,11 @@
     "add": "Dodaj adres",
     "actions": "Akcje"
   },
+  "login": {
+    "loginForm": "Zaloguj się",
+    "login": "Użytkownik",
+    "pass": "Hasło"
+  },
   "menu": {
     "home": "Strona Główna",
     "list": "Lista zawodników",

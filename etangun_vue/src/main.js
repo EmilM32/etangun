@@ -30,6 +30,9 @@ Vue.component("t-belt", Belt)
 axios.defaults.xsrfCookieName = "csrftoken"
 axios.defaults.xsrfHeaderName = "X-CSRFToken"
 
+//TODO
+router.push('Login')
+
 new Vue({
   vuetify,
   axios,

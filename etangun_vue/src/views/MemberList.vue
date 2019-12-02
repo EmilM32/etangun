@@ -64,6 +64,7 @@ export default {
   }),
   methods: {
     getAllMembers () {
+      //store
       axios
         .get('/api/tangun/get_all_members/')
         .then(response => { this.memberlist = response.data.data })

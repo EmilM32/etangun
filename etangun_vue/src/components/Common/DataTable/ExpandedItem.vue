@@ -15,7 +15,7 @@
     </v-card-title>
     <v-card-text>
       <v-row>
-        <v-col cols='3'>
+        <v-col lg="3" md="5" sm="12">
             <v-card outlined color='blue-grey lighten-5'>
               <v-row class='overline pa-3'>
                 <v-col cols='6'>
@@ -48,10 +48,16 @@
                 <v-col cols='6'>
                   {{ item.level }}
                 </v-col>
+                <v-col cols='6'>
+                  {{ $t('memberList.id') }}
+                </v-col>
+                <v-col cols='6'>
+                  {{ item.login }}
+                </v-col>
               </v-row>
             </v-card>
         </v-col>
-        <v-col cols='4'>
+        <v-col lg="4" md="7" sm="12">
           <v-card outlined>
             <v-card-subtitle class='overline font-weight-bold' style='font-family: Verdana'>osiągnięcia</v-card-subtitle>
             <v-card-text class='text-right'>
@@ -67,6 +73,11 @@
                 <img src="@/assets/medals/brown.png" alt="brown" class='medal-style'>
               </div>
             </v-card-text>
+          </v-card>
+        </v-col>
+        <v-col lg="5" md="6" sm="12">
+          <v-card outlined>
+            <v-card-subtitle class='overline font-weight-bold' style='font-family: Verdana'>aktywności</v-card-subtitle>
           </v-card>
         </v-col>
       </v-row>
@@ -136,7 +147,7 @@ export default {
 
 }
 </script>
-<style lang="sass">
+<style lang="sass" scoped>
 .medal-style
   width: 40px
 </style>

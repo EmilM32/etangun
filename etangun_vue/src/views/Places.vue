@@ -131,6 +131,7 @@ export default {
         { text: this.$t('addresses.streetAddress'), value: 'streetAddress', align: 'center' },
         { text: this.$t('addresses.postCode'), value: 'postCode', align: 'center' },
         { text: this.$t('addresses.descr'), value: 'descr', align: 'center' },
+        { text: this.$t('addresses.country'), value: 'country', align: 'center' },
         { text: this.$t('common.actions'), value: 'actions', align: 'center' }
       ]
     }

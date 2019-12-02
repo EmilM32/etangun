@@ -1,5 +1,6 @@
 <template>
-  <v-app v-if='isLogged'>
+  <!-- <v-app v-if='isLogged'> -->
+  <v-app>
     <v-navigation-drawer
       v-model="drawer"
       app
@@ -56,13 +57,13 @@
     <t-info-snackbar></t-info-snackbar>
     <t-error-snackbar></t-error-snackbar>
   </v-app>
-  <Login v-else />
+  <!-- <Login v-else /> -->
 </template>
 <script>
-import Login from "@/views/Login.vue"
+// import Login from "@/views/Login.vue"
 import { mapState } from 'vuex'
 export default {
-  components: { Login },
+  // components: { Login },
   data: () => ({
     drawer: null
   }),

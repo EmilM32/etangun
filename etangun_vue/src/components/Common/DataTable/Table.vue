@@ -13,8 +13,9 @@
     show-expand
     :single-expand="singleExpand"
     :expanded.sync="expanded"
+    @click:row='openRow'
     class="elevation-1">
-    <template v-slot:expanded-item="{ headers, item }">
+    <template v-slot:expanded-item="{ headers, item }" style='background-color:blue'>
       <td :style='{"background-color": "#FAFAFA"}' :colspan="headers.length">
         <ExpandedItem :item='item'></ExpandedItem>
       </td>
@@ -22,6 +23,8 @@
     <template v-slot:item.gender="{ item }">
       <v-icon v-if='item.gender === "M"'>mdi-face</v-icon>
       <v-icon v-else>mdi-face-woman</v-icon>
+    </template>
+    <template v-slot:item.data-table-expand="{ items }">
     </template>
   </v-data-table>
   <div class="text-center pt-2">
@@ -56,11 +59,26 @@ export default {
     expandShow: false,
     expanded: [],
     singleExpand: false,
+    expandedId: -1,
+    // expandedItem: []
   }),
   methods: {
-    activerow () {
-      console.log('activerow')
+    openRow (item) {
+      if (this.expanded.length === 0) {
+        this.expanded.push(item)
+      } else {
+        if ((this.expanded.filter(filter => filter.id === item.id)).length > 0) {
+          this.expanded = this.expanded.filter(filter => filter.id !== item.id)
+        } else {
+          this.expanded.push(item)
+        }
+      }
     }
   }
 }
 </script>
+<style lang="sass">
+.v-data-table tbody tr.v-data-table__expanded
+  background-color: #fafafa!important
+  font-weight: bold
+</style>

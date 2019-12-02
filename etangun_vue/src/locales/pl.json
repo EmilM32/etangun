@@ -26,6 +26,7 @@
     "level": "Stopień",
     "group": "Grupa",
     "gender": "Płeć",
+    "id": "Identyfikator",
     "add": "Dodaj nowego zawodnika",
     "edit": "Edytuj dane zawodnika",
     "comment": "Uwagi",
@@ -36,6 +37,11 @@
     "postCode": "Kod pocztowy",
     "streetAddress": "Adres",
     "descr": "Opis",
+    "country": "Kraj",
+    "countryDict": {
+      "pl": "Polska",
+      "de": "Niemcy"
+    },
     "add": "Dodaj adres",
     "edit": "Edytuj adres",
     "delete": "Usuń adres"

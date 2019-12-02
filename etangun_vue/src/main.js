@@ -31,7 +31,7 @@ axios.defaults.xsrfCookieName = "csrftoken"
 axios.defaults.xsrfHeaderName = "X-CSRFToken"
 
 //TODO
-router.push('Login')
+// router.push('Login')
 
 new Vue({
   vuetify,

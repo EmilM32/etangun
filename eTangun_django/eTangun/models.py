@@ -26,6 +26,7 @@ class Addresses(models.Model):
     street_address = models.CharField(max_length=100)
     is_active = models.BooleanField(default=True)
     descr = models.CharField(max_length=150)
+    country = models.CharField(max_length=2, default='pl')
 
 
 class CompetitionDict(models.Model):

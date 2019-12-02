@@ -26,6 +26,7 @@
     "level": "Level",
     "group": "Group",
     "gender": "Gender",
+    "id": "Id",
     "add": "Add new member",
     "edit": "Edit member data",
     "comment": "Comment",
@@ -36,6 +37,11 @@
     "postCode": "Post code",
     "streetAddress": "Address",
     "descr": "Description",
+    "country": "Country",
+    "countryDict": {
+      "pl": "Poland",
+      "de": "Germany"
+    },
     "add": "Add address",
     "edit": "Edit address",
     "delete": "Delete address"

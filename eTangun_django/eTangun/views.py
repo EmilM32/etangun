@@ -75,7 +75,7 @@ def get_all_addresses(request):
         all_addresses = Addresses.objects.filter(is_active=True).annotate(
             postCode=F('post_code'), streetAddress=F('street_address'),
             isActive=F('is_active')
-        ).values('id', 'city', 'postCode',
+        ).values('id', 'city', 'postCode', 'country',
                  'streetAddress', 'descr', 'isActive')
         all_addresses = list(all_addresses)
 
@@ -104,6 +104,7 @@ def add_new_address(request):
         _new_address.post_code = data_front['postCode']
         _new_address.street_address = data_front['streetAddress']
         _new_address.descr = data_front['descr']
+        _new_address.country = data_front['country']
         _new_address.save()
 
     except BaseException:
@@ -121,6 +122,7 @@ def edit_address(request):
         _edited_item.post_code = data_front['postCode']
         _edited_item.street_address = data_front['streetAddress']
         _edited_item.descr = data_front['descr']
+        _edited_item.country = data_front['country']
         _edited_item.save()
     except BaseException:
         traceback.print_exc()

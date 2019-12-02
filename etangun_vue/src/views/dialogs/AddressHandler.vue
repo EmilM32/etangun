@@ -33,7 +33,18 @@
                 :label="$t('addresses.postCode')">
               </v-text-field>
             </v-col>
-            <v-col cols='8'>
+            <v-col cols='2'>
+              <v-autocomplete
+                required
+                :items='countryDict'
+                item-value='key'
+                item-text='value'
+                v-model='address.country'
+                :rules='notNull'
+                :label="$t('addresses.country')">
+              </v-autocomplete>
+            </v-col>
+            <v-col cols='6'>
               <v-text-field
                 required
                 :rules='notNull'
@@ -91,12 +102,28 @@ export default {
       city: null,
       postCode: null,
       streetAddress: null,
-      descr: null
+      descr: null,
+      country: null
     },
     mask: '##-###',
     valid: true,
     notNull: [v => !!v || ''],
   }),
+  computed: {
+    countryDict () {
+      const dict = [
+        {
+          key: 'pl',
+          value: this.$t('addresses.countryDict.pl')
+        },
+        {
+          key: 'de',
+          value: this.$t('addresses.countryDict.de')
+        }
+      ]
+      return dict
+    }
+  },
   methods: {
     closeDialog () {
       this.$emit("input", false)

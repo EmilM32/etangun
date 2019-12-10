@@ -9,5 +9,6 @@ urlpatterns = [
     path('add_new_address/', views.add_new_address),
     path('edit_address/', views.edit_address),
     path('delete_address/', views.delete_address),
-    path('login_user/', views.login_user)
+    path('login_user/', views.login_user),
+    path('save_member_payments/', views.save_member_payments)
 ]

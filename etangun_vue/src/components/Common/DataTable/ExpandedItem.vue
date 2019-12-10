@@ -81,30 +81,173 @@
           </v-card>
         </v-col>
       </v-row>
-      <v-data-table
-        dense
-        hide-default-footer
-        :headers="paidMonths"
-        :items="monthsCheckBox">
-        <template v-slot:item.ix="props">
-          <v-edit-dialog
-            :return-value.sync="props.item.ix">
-            {{ props.item.ix }}
-            <template v-slot:input>
-              <v-text-field
-                v-model="props.item.ix"
-                label="Edit"
-                single-line
-                counter
-              ></v-text-field>
+      <v-row align='center' class='text-right'>
+        <v-col cols='1'>
+          {{ $t('memberList.year') }}
+        </v-col>
+        <v-col cols='2'>
+          <v-autocomplete
+            v-model='yearModel'
+            :items='yearsList'
+          >
+          </v-autocomplete>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col cols='11'>
+          <v-data-table
+            dense
+            hide-default-footer
+            :headers="paidMonths"
+            :items="monthsPayments">
+            <template v-slot:item.ix="props">
+              <v-edit-dialog
+                :return-value.sync="props.item.ix">
+                {{ props.item.ix }}
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.ix"
+                    single-line
+                    counter
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
             </template>
-          </v-edit-dialog>
-        </template>
-      </v-data-table>
+            <template v-slot:item.x="props">
+              <v-edit-dialog
+                :return-value.sync="props.item.x">
+                {{ props.item.x }}
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.x"
+                    single-line
+                    counter
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
+            </template>
+            <template v-slot:item.xi="props">
+              <v-edit-dialog
+                :return-value.sync="props.item.xi">
+                {{ props.item.xi }}
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.xi"
+                    single-line
+                    counter
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
+            </template>
+            <template v-slot:item.xii="props">
+              <v-edit-dialog
+                :return-value.sync="props.item.xii">
+                {{ props.item.xii }}
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.xii"
+                    single-line
+                    counter
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
+            </template>
+            <template v-slot:item.i="props">
+              <v-edit-dialog
+                :return-value.sync="props.item.i">
+                {{ props.item.i }}
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.i"
+                    single-line
+                    counter
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
+            </template>
+            <template v-slot:item.ii="props">
+              <v-edit-dialog
+                :return-value.sync="props.item.ii">
+                {{ props.item.ii }}
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.ii"
+                    single-line
+                    counter
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
+            </template>
+            <template v-slot:item.iii="props">
+              <v-edit-dialog
+                :return-value.sync="props.item.iii">
+                {{ props.item.iii }}
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.iii"
+                    single-line
+                    counter
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
+            </template>
+            <template v-slot:item.iv="props">
+              <v-edit-dialog
+                :return-value.sync="props.item.iv">
+                {{ props.item.iv }}
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.iv"
+                    single-line
+                    counter
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
+            </template>
+            <template v-slot:item.v="props">
+              <v-edit-dialog
+                :return-value.sync="props.item.v">
+                {{ props.item.v }}
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.v"
+                    single-line
+                    counter
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
+            </template>
+            <template v-slot:item.vi="props">
+              <v-edit-dialog
+                :return-value.sync="props.item.vi">
+                {{ props.item.vi }}
+                <template v-slot:input>
+                  <v-text-field
+                    v-model="props.item.vi"
+                    single-line
+                    counter
+                  ></v-text-field>
+                </template>
+              </v-edit-dialog>
+            </template>
+          </v-data-table>
+        </v-col>
+        <v-col cols='1'>
+          <v-btn
+            icon
+            fab
+            large
+            color='success'
+            @click='savePaymentData'>
+            <v-icon>mdi-content-save</v-icon>
+          </v-btn>
+        </v-col>
+      </v-row>
     </v-card-text>
   </v-card>
 </template>
 <script>
+import axios from "axios"
 export default {
   props: ['item'],
   data: () => ({
@@ -120,7 +263,9 @@ export default {
       {text: 'V', value: 'v'},
       {text: 'VI', value: 'vi'}
     ],
-    monthsCheckBox: [{i:0,ii:0,iii:0,iv:0,v:0,vi:0,ix:0,x:0,xi:0,xii:0}]
+    monthsPayments: [{i:0,ii:0,iii:0,iv:0,v:0,vi:0,ix:0,x:0,xi:0,xii:0}],
+    yearsList: ['2019/2020'],
+    yearModel: '2019/2020'
   }),
   methods: {
     getAge(dateString) {
@@ -130,6 +275,16 @@ export default {
         let m = today.getMonth() - birthDate.getMonth()
         if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--
         return age
+    },
+    savePaymentData () {
+      const dataToSend = {
+        years: this.yearModel,
+        payments: this.monthsPayments
+      }
+      axios
+        .post('/api/tangun/save_member_payments/', dataToSend)
+        .then(response => this.$store.commit('snackbar/setSnackSuccess', this.$t('snackbar.success.save')))
+        .catch(error => console.error(error))
     }
   },
   computed: {

@@ -30,7 +30,8 @@
     "add": "Dodaj nowego zawodnika",
     "edit": "Edytuj dane zawodnika",
     "comment": "Uwagi",
-    "yearsOld": "Lat"
+    "yearsOld": "Lat",
+    "year": "Rok"
   },
   "addresses": {
     "city": "Miasto",

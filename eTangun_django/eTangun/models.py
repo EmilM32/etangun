@@ -42,3 +42,10 @@ class CompetitionResult(models.Model):
     address = models.ForeignKey(Addresses, on_delete=models.CASCADE)
     competition_active = models.ForeignKey(CompetitionDict,
                                            on_delete=models.CASCADE)
+
+
+class PaymentsList(models.Model):
+    member_id = models.ForeignKey(Members, on_delete=models.CASCADE)
+    year = models.IntegerField()
+    month = models.IntegerField()
+    payment = models.IntegerField()

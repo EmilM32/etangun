@@ -167,3 +167,74 @@ def login_user(request):
         traceback.print_exc()
         return JsonResponse({'code': 1})
     return JsonResponse({'data': return_status, 'code': 0})
+
+
+@csrf_exempt
+@require_http_methods(["POST"])
+def save_member_payments(request):
+    """
+    Funkcja zapisuje aktualny stan składki członkowskiej
+    """
+    try:
+        data_front = json.loads(request.body)
+        years = data_front['years']
+        payments = data_front['payments'][0]
+        year_arr = years.split('/')
+        payments_arr = [
+            {
+                "year": year_arr[1],
+                "month": 'I',
+                "payment": payments['i']
+            },
+            {
+                "year": year_arr[1],
+                "month": 'II',
+                "payment": payments['ii']
+            },
+            {
+                "year": year_arr[1],
+                "month": 'III',
+                "payment": payments['iii']
+            },
+            {
+                "year": year_arr[1],
+                "month": 'IV',
+                "payment": payments['iv']
+            },
+            {
+                "year": year_arr[1],
+                "month": 'V',
+                "payment": payments['v']
+            },
+            {
+                "year": year_arr[1],
+                "month": 'VI',
+                "payment": payments['vi']
+            },
+            {
+                "year": year_arr[0],
+                "month": 'IX',
+                "payment": payments['ix']
+            },
+            {
+                "year": year_arr[0],
+                "month": 'X',
+                "payment": payments['x']
+            },
+            {
+                "year": year_arr[0],
+                "month": 'XI',
+                "payment": payments['xi']
+            },
+            {
+                "year": year_arr[0],
+                "month": 'XII',
+                "payment": payments['xii']
+            },
+        ]
+        print(payments_arr)
+
+    except BaseException:
+        traceback.print_exc()
+        return JsonResponse({'code': 1})
+    return JsonResponse({'code': 0})

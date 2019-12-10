@@ -30,7 +30,8 @@
     "add": "Add new member",
     "edit": "Edit member data",
     "comment": "Comment",
-    "yearsOld": "yo"
+    "yearsOld": "yo",
+    "year": "Year"
   },
   "addresses": {
     "city": "City",

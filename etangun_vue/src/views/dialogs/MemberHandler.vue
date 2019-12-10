@@ -98,7 +98,7 @@
   </v-dialog>
 </template>
 <script>
-import axios from "axios"
+import axios from 'axios'
 export default {
   props: ['value', 'addCase', 'beltLevels'],
   data: () => ({
@@ -119,9 +119,9 @@ export default {
       axios
         .post('/api/tangun/save_new_member/', this.memberData)
         .then(response => {
-            this.$emit('reloadData', true)
-            this.$store.commit('snackbar/setSnackSuccess', this.$t('snackbar.success.save'))
-            this.closeDialog()
+          this.$emit('reloadData', true)
+          this.$store.commit('snackbar/setSnackSuccess', this.$t('snackbar.success.save'))
+          this.closeDialog()
         })
         .catch(error => {
           console.error(error)
@@ -129,7 +129,7 @@ export default {
         })
     },
     closeDialog () {
-      this.$emit("input", false)
+      this.$emit('input', false)
     }
   }
 }

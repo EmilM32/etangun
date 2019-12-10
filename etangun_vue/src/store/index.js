@@ -1,7 +1,7 @@
-import Vue from "vue"
-import Vuex from "vuex"
-import { snackbar } from "@/store/snackbar.js"
-import { auth } from "@/store/auth.js"
+import Vue from 'vue'
+import Vuex from 'vuex'
+import { snackbar } from '@/store/snackbar.js'
+import { auth } from '@/store/auth.js'
 
 Vue.use(Vuex)
 

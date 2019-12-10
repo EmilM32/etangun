@@ -107,7 +107,7 @@ export default {
     },
     mask: '##-###',
     valid: true,
-    notNull: [v => !!v || ''],
+    notNull: [v => !!v || '']
   }),
   computed: {
     countryDict () {
@@ -126,7 +126,7 @@ export default {
   },
   methods: {
     closeDialog () {
-      this.$emit("input", false)
+      this.$emit('input', false)
     },
     saveData () {
       if (this.$refs.addressForm.validate()) {

@@ -14,27 +14,27 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
-      message: "",
+      message: '',
       show: false,
-      mode: "",
+      mode: '',
       timeout: 6000,
-      text: "Test"
-    };
+      text: 'Test'
+    }
   },
-  created: function() {
+  created: function () {
     this.$store.watch(
       state => state.snackbar.snackInfo,
       () => {
-        const msg = this.$store.state.snackbar.snackInfo;
-        if (msg !== "") {
-          this.show = true;
-          this.message = this.$store.state.snackbar.snackInfo;
-          this.$store.commit("snackbar/setSnackInfo", "");
+        const msg = this.$store.state.snackbar.snackInfo
+        if (msg !== '') {
+          this.show = true
+          this.message = this.$store.state.snackbar.snackInfo
+          this.$store.commit('snackbar/setSnackInfo', '')
         }
       }
-    );
+    )
   }
-};
+}
 </script>

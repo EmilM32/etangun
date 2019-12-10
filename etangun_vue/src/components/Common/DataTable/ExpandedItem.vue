@@ -247,7 +247,7 @@
   </v-card>
 </template>
 <script>
-import axios from "axios"
+import axios from 'axios'
 export default {
   props: ['item'],
   data: () => ({
@@ -263,18 +263,18 @@ export default {
       {text: 'V', value: 'v'},
       {text: 'VI', value: 'vi'}
     ],
-    monthsPayments: [{i:0,ii:0,iii:0,iv:0,v:0,vi:0,ix:0,x:0,xi:0,xii:0}],
+    monthsPayments: [{i: 0, ii: 0, iii: 0, iv: 0, v: 0, vi: 0, ix: 0, x: 0, xi: 0, xii: 0}],
     yearsList: ['2019/2020'],
     yearModel: '2019/2020'
   }),
   methods: {
-    getAge(dateString) {
-        let today = new Date()
-        let birthDate = new Date(dateString)
-        let age = today.getFullYear() - birthDate.getFullYear()
-        let m = today.getMonth() - birthDate.getMonth()
-        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--
-        return age
+    getAge (dateString) {
+      let today = new Date()
+      let birthDate = new Date(dateString)
+      let age = today.getFullYear() - birthDate.getFullYear()
+      let m = today.getMonth() - birthDate.getMonth()
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) age--
+      return age
     },
     savePaymentData () {
       const dataToSend = {
@@ -292,10 +292,10 @@ export default {
       return this.getAge(this.item.birthDate)
     },
     levelNum () {
-      return this.item['level'].split(" ")[0]
+      return this.item['level'].split(' ')[0]
     },
     levelType () {
-      return this.item['level'].split(" ")[1]
+      return this.item['level'].split(' ')[1]
     }
   },
   mounted () {}

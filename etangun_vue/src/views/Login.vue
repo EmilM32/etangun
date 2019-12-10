@@ -50,10 +50,10 @@
   </v-app>
 </template>
 <script>
-import axios from "axios"
+import axios from 'axios'
 export default {
   props: {
-    source: String,
+    source: String
   },
   data: () => ({
     username: null,
@@ -62,9 +62,9 @@ export default {
   methods: {
     login () {
       axios
-        .post('/api/tangun/login_user/', { username: this.username, password:  this.password })
+        .post('/api/tangun/login_user/', { username: this.username, password: this.password })
         .then(response => {
-          this.$store.commit("auth/setLoggedState", { logged: response.data.data, userLogin: this.username})
+          this.$store.commit('auth/setLoggedState', { logged: response.data.data, userLogin: this.username})
           this.$router.push('Home')
         })
         .catch(error => console.error(error))

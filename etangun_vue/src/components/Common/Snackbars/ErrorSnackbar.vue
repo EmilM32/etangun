@@ -17,27 +17,27 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       show: false,
-      message: "Test",
-      y: "top",
+      message: 'Test',
+      y: 'top',
       x: null,
-      mode: "",
+      mode: '',
       timeout: 6000,
-      text: "Test"
-    };
+      text: 'Test'
+    }
   },
-  created: function() {
+  created: function () {
     this.$store.watch(state => state.snackbar.snackError, () => {
-        const msg = this.$store.state.snackbar.snackError
-        if (msg !== "") {
-          this.show = true
-          this.message = this.$store.state.snackbar.snackError
-          this.$store.commit("snackbar/setSnackError", "")
-        }
+      const msg = this.$store.state.snackbar.snackError
+      if (msg !== '') {
+        this.show = true
+        this.message = this.$store.state.snackbar.snackError
+        this.$store.commit('snackbar/setSnackError', '')
       }
-    );
+    }
+    )
   }
-};
+}
 </script>

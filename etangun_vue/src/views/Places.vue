@@ -86,8 +86,8 @@
   </div>
 </template>
 <script>
-import axios from "axios"
-import AddressHandler from "@/views/dialogs/AddressHandler.vue"
+import axios from 'axios'
+import AddressHandler from '@/views/dialogs/AddressHandler.vue'
 export default {
   components: { AddressHandler },
   data: () => ({

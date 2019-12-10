@@ -17,7 +17,7 @@ export default {
   computed: {
     levelClass () {
       let _str = ''
-      this.levelT==='kup'
+      this.levelT === 'kup'
         ? _str = (`${this.levelT}-${this.levelN}`)
         : _str = (`${this.levelT}`)
       return _str

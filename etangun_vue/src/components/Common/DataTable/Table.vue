@@ -46,7 +46,7 @@
 </div>
 </template>
 <script>
-import ExpandedItem from "@/components/Common/DataTable/ExpandedItem.vue"
+import ExpandedItem from '@/components/Common/DataTable/ExpandedItem.vue'
 export default {
   props: ['headers', 'items', 'search'],
   components: {ExpandedItem},
@@ -55,11 +55,11 @@ export default {
     pageCount: 0,
     itemsPerPage: 10,
 
-    //expand feature
+    // expand feature
     expandShow: false,
     expanded: [],
     singleExpand: false,
-    expandedId: -1,
+    expandedId: -1
     // expandedItem: []
   }),
   methods: {

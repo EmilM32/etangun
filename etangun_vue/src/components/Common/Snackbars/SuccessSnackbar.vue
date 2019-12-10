@@ -13,25 +13,25 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
-      message: "Test",
+      message: 'Test',
       show: false,
-      mode: "",
+      mode: '',
       timeout: 3000,
-      text: "Test"
-    };
+      text: 'Test'
+    }
   },
-  created: function() {
-    this.$store.watch(state => state.snackbar.snackSuccess,() => {
-        const msg = this.$store.state.snackbar.snackSuccess
-        if (msg !== "") {
-          this.show = true
-          this.message = this.$store.state.snackbar.snackSuccess
-          this.$store.commit("snackbar/setSnackSuccess", "")
-        }
+  created: function () {
+    this.$store.watch(state => state.snackbar.snackSuccess, () => {
+      const msg = this.$store.state.snackbar.snackSuccess
+      if (msg !== '') {
+        this.show = true
+        this.message = this.$store.state.snackbar.snackSuccess
+        this.$store.commit('snackbar/setSnackSuccess', '')
       }
-    );
+    }
+    )
   }
-};
+}
 </script>

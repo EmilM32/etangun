@@ -39,7 +39,7 @@
         <span>{{ $t('common.add') }}</span>
       </v-tooltip>
     </v-fab-transition>
-    <MemberHandler 
+    <MemberHandler
       v-if='memberHandler.dialog'
       v-model='memberHandler.dialog'
       :addCase='memberHandler.addCase'
@@ -49,8 +49,8 @@
   </div>
 </template>
 <script>
-import axios from "axios"
-import MemberHandler from "@/views/dialogs/MemberHandler.vue"
+import axios from 'axios'
+import MemberHandler from '@/views/dialogs/MemberHandler.vue'
 export default {
   components: { MemberHandler },
   data: () => ({
@@ -60,11 +60,11 @@ export default {
       beltLevels: []
     },
     searchModel: '',
-    memberlist: [],
+    memberlist: []
   }),
   methods: {
     getAllMembers () {
-      //store
+      // store
       axios
         .get('/api/tangun/get_all_members/')
         .then(response => { this.memberlist = response.data.data })
